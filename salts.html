@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salts - Chemistry - Darul Ilm Educational Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-orange: #d35400;
+      --dark-orange: #a04000;
+      --light-orange: #fbeee6;
+      --bg-color: #fefaf1;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --medium-gray: #757575;
+      --white: #ffffff;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Header styling */
+    .header-content {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 30px;
+      background-color: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-orange), #e67e22);
+    }
+
+    .header-content h1 {
+      color: var(--primary-orange);
+      font-size: 2.8em;
+      font-weight: 700;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .institution-tag {
+      color: var(--medium-gray);
+      font-size: 1em;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* Section styling */
+    .section {
+      background: var(--white);
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 900px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .section h2 {
+      color: var(--primary-orange);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      border-bottom: 2px solid var(--light-orange);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section p, .section ul {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .section ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .section ul li {
+      margin-bottom: 12px;
+      padding-left: 35px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: "🧂";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.2em;
+    }
+
+    /* Definition boxes */
+    .definition {
+      background-color: var(--light-gray);
+      border-left: 4px solid var(--primary-orange);
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .definition strong {
+      color: var(--primary-orange);
+    }
+
+    /* Interactive elements */
+    .interactive-box {
+      background-color: var(--light-orange);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border: 1px dashed var(--primary-orange);
+    }
+
+    .interactive-box h3 {
+      color: var(--dark-orange);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: var(--primary-orange);
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    tr:hover {
+      background-color: var(--light-orange);
+    }
+
+    /* Reaction equation styling */
+    .reaction-equation {
+      font-family: 'Courier New', monospace;
+      background-color: #f8f9fa;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 15px 0;
+      border-left: 3px solid var(--primary-orange);
+      overflow-x: auto;
+    }
+
+    /* Back button styling */
+    a.back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--primary-orange), #e67e22);
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(211, 84, 0, 0.3);
+      width: fit-content;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05em;
+    }
+
+    a.back:hover {
+      background: linear-gradient(135deg, var(--dark-orange), #d35400);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(160, 64, 0, 0.4);
+    }
+
+    a.back:active {
+      transform: translateY(1px);
+    }
+
+    /* Iframe styling for embedded videos */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Tooltip for chemical formulas */
+    .chemical-formula {
+      position: relative;
+      cursor: help;
+      border-bottom: 1px dotted var(--primary-orange);
+      font-weight: 600;
+    }
+
+    .chemical-formula:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--dark-orange);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    /* Progress tracker */
+    .progress-tracker {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--white);
+      border-radius: 50px;
+      padding: 10px 5px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--medium-gray);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .progress-dot.active {
+      background-color: var(--primary-orange);
+      transform: scale(1.3);
+    }
+
+    /* Solubility chart */
+    .solubility-chart {
+      width: 100%;
+      margin: 20px 0;
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .solubility-chart th {
+      background-color: var(--dark-orange);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      color: var(--medium-gray);
+      font-size: 0.9em;
+      width: 100%;
+    }
+
+    /* Crystal grid */
+    .crystal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .crystal-item {
+      background: var(--light-orange);
+      border-radius: 8px;
+      padding: 15px 10px;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid #fad7c4;
+    }
+
+    .crystal-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(211, 84, 0, 0.2);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .progress-tracker {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content h1 {
+        font-size: 2.2em;
+      }
+      .section h2 {
+        font-size: 1.6em;
+      }
+      .section p, .section ul {
+        font-size: 1em;
+      }
+      .header-content, .section {
+        padding: 25px;
+      }
+      .crystal-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .header-content h1 {
+        font-size: 1.8em;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .section h2 {
+        font-size: 1.4em;
+      }
+      .header-content, .section {
+        padding: 20px;
+      }
+      a.back {
+        padding: 12px 24px;
+        width: 100%;
+        text-align: center;
+      }
+      .crystal-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+    .section:nth-child(6) { animation-delay: 0.5s; }
+    .section:nth-child(7) { animation-delay: 0.6s; }
+
+    /* Crystal animation */
+    @keyframes crystalPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .crystal-item {
+      animation: crystalPulse 4s ease-in-out infinite;
+    }
+
+    .crystal-item:nth-child(2n) {
+      animation-delay: 0.5s;
+    }
+
+    .crystal-item:nth-child(3n) {
+      animation-delay: 1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-content">
+    <h1><i class="fas fa-mortar-pestle"></i> Salts in Chemistry</h1>
+    <p class="institution-tag">Darul Ilm Educational Institute - Chemistry Department</p>
+  </div>
+
+  <div class="progress-tracker">
+    <div class="progress-dot active" data-section="what-are-salts"></div>
+    <div class="progress-dot" data-section="formation"></div>
+    <div class="progress-dot" data-section="types"></div>
+    <div class="progress-dot" data-section="solubility"></div>
+    <div class="progress-dot" data-section="examples"></div>
+    <div class="progress-dot" data-section="video"></div>
+    <div class="progress-dot" data-section="experiment"></div>
+  </div>
+
+  <div class="section" id="what-are-salts">
+    <h2><i class="fas fa-question-circle"></i> What are Salts?</h2>
+    <p>Salts are ionic compounds that result from the neutralization reaction of an acid and a base. They are composed of cations (positively charged ions) and anions (negatively charged ions) arranged in a crystal lattice structure.</p>
+    
+    <div class="definition">
+      <strong>Scientific Definition:</strong> A salt is an ionic compound formed when the hydrogen ions (H⁺) of an acid are replaced by metal ions or other positive ions (like ammonium NH₄⁺).
+    </div>
+    
+    <p>Key characteristics of salts include:</p>
+    <ul>
+      <li>Typically crystalline solids at room temperature</li>
+      <li>Generally high melting and boiling points</li>
+      <li>Many are soluble in water</li>
+      <li>Conduct electricity when molten or in solution (electrolytes)</li>
+      <li>Often have characteristic tastes (though tasting laboratory chemicals is dangerous!)</li>
+    </ul>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-lightbulb"></i> Did You Know?</h3>
+      <p>The word "salt" comes from the Latin word "sal," which originally referred specifically to sodium chloride (table salt). In chemistry, the term has been generalized to include all ionic compounds formed in neutralization reactions.</p>
+    </div>
+  </div>
+
+  <div class="section" id="formation">
+    <h2><i class="fas fa-atom"></i> Formation of Salts</h2>
+    <p>Salts are primarily formed through neutralization reactions between acids and bases:</p>
+    
+    <div class="reaction-equation">
+      Acid + Base → Salt + Water
+    </div>
+    
+    <p>For example:</p>
+    <div class="reaction-equation">
+      HCl (aq) + NaOH (aq) → NaCl (aq) + H₂O (l)
+    </div>
+    
+    <p>Other methods of salt formation include:</p>
+    <ul>
+      <li><strong>Direct combination:</strong> Metal + Non-metal → Salt</li>
+      <li><strong>Acid + Metal:</strong> Acid + Metal → Salt + Hydrogen gas</li>
+      <li><strong>Acid + Metal Carbonate:</strong> Acid + Metal Carbonate → Salt + Water + Carbon Dioxide</li>
+    </ul>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-brain"></i> Understanding Check</h3>
+      <p>Why do you think water is always produced in acid-base neutralization reactions? What would be the products if you reacted sulfuric acid (H₂SO₄) with potassium hydroxide (KOH)?</p>
+    </div>
+  </div>
+
+  <div class="section" id="types">
+    <h2><i class="fas fa-shapes"></i> Types of Salts</h2>
+    <p>Salts can be classified based on their composition and properties:</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Normal Salts</td>
+          <td>Formed by complete replacement of replaceable H⁺ ions</td>
+          <td>NaCl, KNO₃</td>
+        </tr>
+        <tr>
+          <td>Acid Salts</td>
+          <td>Contain replaceable H⁺ ions (from polyprotic acids)</td>
+          <td>NaHSO₄, NaHCO₃</td>
+        </tr>
+        <tr>
+          <td>Basic Salts</td>
+          <td>Contain hydroxide (OH⁻) ions along with other anions</td>
+          <td>Pb(OH)Cl, Bi(OH)₂Cl</td>
+        </tr>
+        <tr>
+          <td>Double Salts</td>
+          <td>Contain more than one cation or anion</td>
+          <td>KAl(SO₄)₂·12H₂O (alum)</td>
+        </tr>
+        <tr>
+          <td>Complex Salts</td>
+          <td>Contain complex ions that don't dissociate completely</td>
+          <td>[Ag(NH₃)₂]Cl, K₄[Fe(CN)₆]</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="solubility">
+    <h2><i class="fas fa-vial"></i> Solubility of Salts</h2>
+    <p>Solubility determines whether a salt will dissolve in water. Understanding solubility rules is crucial for predicting reactions:</p>
+    
+    <h3 style="margin-top: 25px; color: var(--dark-orange);">Solubility Rules Chart</h3>
+    <div class="solubility-chart">
+      <table>
+        <thead>
+          <tr>
+            <th>Salt Type</th>
+            <th>Solubility in Water</th>
+            <th>Exceptions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nitrates (NO₃⁻)</td>
+            <td>All soluble</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Alkali metals (Li⁺, Na⁺, K⁺ etc.)</td>
+            <td>All soluble</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Ammonium (NH₄⁺)</td>
+            <td>All soluble</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Chlorides (Cl⁻), Bromides (Br⁻), Iodides (I⁻)</td>
+            <td>Most soluble</td>
+            <td>Ag⁺, Pb²⁺, Hg₂²⁺</td>
+          </tr>
+          <tr>
+            <td>Sulfates (SO₄²⁻)</td>
+            <td>Most soluble</td>
+            <td>Ba²⁺, Sr²⁺, Pb²⁺, Ca²⁺ (slightly soluble)</td>
+          </tr>
+          <tr>
+            <td>Carbonates (CO₃²⁻)</td>
+            <td>Most insoluble</td>
+            <td>Alkali metals, NH₄⁺</td>
+          </tr>
+          <tr>
+            <td>Phosphates (PO₄³⁻)</td>
+            <td>Most insoluble</td>
+            <td>Alkali metals, NH₄⁺</td>
+          </tr>
+          <tr>
+            <td>Hydroxides (OH⁻)</td>
+            <td>Most insoluble</td>
+            <td>Alkali metals, Ba²⁺, Sr²⁺, Ca²⁺ (slightly soluble)</td>
+          </tr>
+          <tr>
+            <td>Sulfides (S²⁻)</td>
+            <td>Most insoluble</td>
+            <td>Alkali metals, NH₄⁺, Ca²⁺, Sr²⁺, Ba²⁺</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-flask"></i> Solubility Test</h3>
+      <p>Try dissolving different salts in water: sodium chloride (soluble), calcium carbonate (insoluble), and copper sulfate (soluble). Observe and record which salts dissolve and which form precipitates.</p>
+    </div>
+  </div>
+
+  <div class="section" id="examples">
+    <h2><i class="fas fa-cubes"></i> Common Examples of Salts</h2>
+    
+    <div class="crystal-grid">
+      <div class="crystal-item">
+        <div style="font-size: 2em; color: #3498db;">🧊</div>
+        <h3>Sodium Chloride</h3>
+        <p>NaCl</p>
+        <p style="font-size: 0.9em;">Table salt, food preservation</p>
+      </div>
+      
+      <div class="crystal-item">
+        <div style="font-size: 2em; color: #2ecc71;">🔷</div>
+        <h3>Copper Sulfate</h3>
+        <p>CuSO₄</p>
+        <p style="font-size: 0.9em;">Fungicide, electroplating</p>
+      </div>
+      
+      <div class="crystal-item">
+        <div style="font-size: 2em; color: #9b59b6;">💎</div>
+        <h3>Potassium Nitrate</h3>
+        <p>KNO₃</p>
+        <p style="font-size: 0.9em;">Fertilizer, gunpowder</p>
+      </div>
+      
+      <div class="crystal-item">
+        <div style="font-size: 2em; color: #e74c3c;">🧿</div>
+        <h3>Calcium Carbonate</h3>
+        <p>CaCO₃</p>
+        <p style="font-size: 0.9em;">Chalk, limestone, antacid</p>
+      </div>
+      
+      <div class="crystal-item">
+        <div style="font-size: 2em; color: #f39c12;">🔶</div>
+        <h3>Sodium Bicarbonate</h3>
+        <p>NaHCO₃</p>
+        <p style="font-size: 0.9em;">Baking soda, fire extinguisher</p>
+      </div>
+      
+      <div class="crystal-item">
+        <div style="font-size: 2em; color: #1abc9c;">💠</div>
+        <h3>Magnesium Sulfate</h3>
+        <p>MgSO₄</p>
+        <p style="font-size: 0.9em;">Epsom salt, fertilizer</p>
+      </div>
+    </div>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-lightbulb"></i> Salt in Daily Life</h3>
+      <p>Beyond table salt, various salts play crucial roles: calcium phosphate in bones and teeth, potassium iodide in iodized salt for thyroid health, and sodium hypochlorite as bleach for disinfection.</p>
+    </div>
+  </div>
+
+  <div class="section" id="video">
+    <h2><i class="fas fa-video"></i> Watch: Introduction to Salts</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/Y2gBL9-jU1E" title="Introduction to Salts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p style="text-align: center; font-size: 0.9em; color: var(--medium-gray); margin-top: 10px;">
+      Video: Formation, Properties and Uses of Salts
+    </p>
+  </div>
+
+  <div class="section" id="experiment">
+    <h2><i class="fas fa-home"></i> Try This at Home! (with adult supervision)</h2>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-flask"></i> Experiment 1: Crystal Growing</h3>
+      <p><strong>Materials:</strong> Epsom salt (MgSO₄), water, glass container, food coloring (optional)</p>
+      <p><strong>Procedure:</strong></p>
+      <ol style="padding-left: 35px;">
+        <li>Heat ½ cup of water until almost boiling</li>
+        <li>Add Epsom salt while stirring until no more dissolves</li>
+        <li>Add a few drops of food coloring if desired</li>
+        <li>Pour into a clean glass container</li>
+        <li>Place in refrigerator and observe over several days</li>
+      </ol>
+      <p><strong>Observation:</strong> Needle-like crystals will form as the solution cools and water evaporates.</p>
+    </div>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-vial"></i> Experiment 2: Salt Identification</h3>
+      <p><strong>Materials:</strong> Table salt, Epsom salt, baking soda, vinegar, lemon juice</p>
+      <p><strong>Procedure:</strong></p>
+      <ol style="padding-left: 35px;">
+        <li>Place small samples of each salt in separate containers</li>
+        <li>Add a few drops of vinegar to each sample</li>
+        <li>Observe any reactions (fizzing indicates carbonate/bicarbonate)</li>
+        <li>Add lemon juice to new samples (similar reaction to carbonates)</li>
+      </ol>
+      <p><strong>Observation:</strong> Baking soda will fizz vigorously with acids, while table salt and Epsom salt won't react.</p>
+    </div>
+    
+    <p style="font-weight: 600; color: var(--primary-orange);"><i class="fas fa-exclamation-triangle"></i> Safety Note: Always wear protective goggles when conducting experiments. Never taste unknown chemicals. Work in a well-ventilated area.</p>
+  </div>
+
+  <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Chemistry Dashboard</a>
+
+  <footer>
+    <p>© 2023 Darul Ilm Educational Institute | Chemistry Department | Last Updated: <span id="last-updated"></span></p>
+  </footer>
+
+  <script>
+    // Update last modified date
+    document.getElementById('last-updated').textContent = new Date(document.lastModified).toLocaleDateString();
+    
+    // Progress tracker functionality
+    const sections = document.querySelectorAll('.section');
+    const dots = document.querySelectorAll('.progress-dot');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          dots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.dataset.section === sectionId) {
+              dot.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    sections.forEach(section => {
+      observer.observe(section);
+      
+      // Add click functionality to dots
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const targetSection = document.getElementById(dot.dataset.section);
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+    
+    // Chemical formula tooltip enhancement
+    const formulas = document.querySelectorAll('.chemical-formula');
+    formulas.forEach(formula => {
+      formula.addEventListener('click', () => {
+        alert(`Chemical name: ${formula.dataset.tooltip}\nFormula: ${formula.textContent}`);
+      });
+    });
+    
+    // Crystal grid animation
+    const crystals = document.querySelectorAll('.crystal-item');
+    crystals.forEach(crystal => {
+      crystal.addEventListener('click', function() {
+        this.style.animation = 'none';
+        setTimeout(() => {
+          this.style.animation = '';
+        }, 10);
+      });
+    });
+  </script>
+</body>
+</html>

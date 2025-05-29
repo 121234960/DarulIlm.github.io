@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry: Acids, Bases & Salts - Darul Ilm Educational Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Basic styling for the page */
+    body {
+      background-color: #eef2f7; /* Lighter, more modern off-white */
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, professional font */
+      margin: 0;
+      padding: 20px;
+      color: #333a45; /* Darker, slightly desaturated blue-grey for text */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center content */
+      min-height: 100vh;
+    }
+
+    /* Header section styling */
+    .header-content {
+      text-align: center;
+      margin-bottom: 50px; /* Increased space below header */
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 16px; /* Softer, larger radius */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* More subtle, modern shadow */
+      width: 100%;
+      max-width: 950px; /* Slightly wider header */
+    }
+
+    /* Styling for the main heading */
+    h1 {
+      color: #1a237e; /* Deep indigo for a strong, academic feel */
+      margin-bottom: 10px; /* Space between title and subtitle */
+      font-size: 2.8em; /* Slightly larger font size for the main title */
+      font-weight: 700; /* Bolder title */
+    }
+
+    /* Styling for the institution name */
+    .institution-name {
+      color: #3949ab; /* Medium indigo, complementary to the main title */
+      font-size: 1.5em; /* Prominent but secondary to the main title */
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .institution-subtitle {
+      color: #546e7a; /* Slate grey for a softer touch */
+      font-size: 1.1em;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+
+
+    /* Grid container for the cards */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Slightly wider cards */
+      gap: 30px; /* Increased gap for better spacing */
+      width: 100%;
+      max-width: 950px; /* Max width for the dashboard content */
+    }
+
+    /* Styling for individual cards */
+    .card {
+      background-color: #ffffff; /* White background for cards */
+      border-radius: 12px; /* Rounded corners for a softer look */
+      padding: 30px; /* Increased padding inside cards */
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.07); /* Refined shadow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 160px; /* Minimum height for cards */
+      border: 1px solid #e0e0e0; /* Subtle border */
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.04); /* More noticeable lift and enlarge */
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12); /* Enhanced shadow on hover */
+      background-color: #f8f9fa; /* Slight background change on hover */
+    }
+
+    /* Styling for links within cards */
+    .card a {
+      text-decoration: none;
+      color: #2962ff; /* Vibrant blue for links */
+      font-weight: 600; /* Bolder link text */
+      font-size: 1.4em; /* Larger font size for links */
+      transition: color 0.3s ease;
+      display: flex; /* For icon alignment */
+      align-items: center;
+      gap: 10px; /* Space between icon and text */
+    }
+
+    .card a .icon {
+        font-size: 1.5em; /* Icon size within the link */
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover a .icon {
+        transform: scale(1.1) rotate(5deg); /* Subtle icon animation on hover */
+    }
+
+
+    .card a:hover {
+      color: #1c54b2; /* Darker blue on link hover */
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .header-content {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 2.2em;
+      }
+      .institution-name {
+        font-size: 1.3em;
+      }
+      .institution-subtitle {
+        font-size: 1em;
+      }
+      .dashboard {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+       .card {
+        padding: 25px;
+        min-height: 140px;
+      }
+      .card a {
+        font-size: 1.2em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      .institution-name {
+        font-size: 1.1em;
+      }
+      .institution-subtitle {
+        font-size: 0.9em;
+      }
+      .dashboard {
+        grid-template-columns: 1fr; /* Single column layout for very small screens */
+      }
+      .card {
+        padding: 20px;
+        min-height: 120px;
+      }
+      .card a {
+        font-size: 1.1em;
+      }
+      .card a .icon {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-content">
+    <h1>Chemistry Grade 11: Acids, Bases and Salts</h1>
+    <p class="institution-name">Darul Ilm Educational Institute</p>
+    <p class="institution-subtitle">Exploring the fascinating world of chemical reactions.</p>
+  </div>
+
+  <div class="dashboard">
+    <div class="card">
+      <a href="acids.html"><span class="icon">🧪</span> Acids</a>
+    </div>
+    <div class="card">
+      <a href="bases.html"><span class="icon">🧴</span> Bases</a>
+    </div>
+    <div class="card">
+      <a href="salts.html"><span class="icon">🧂</span> Salts</a>
+    </div>
+    <div class="card">
+      <a href="quiz.html"><span class="icon">📝</span> Quiz</a>
+    </div>
+  </div>
+
+</body>
+</html>

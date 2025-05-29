@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz: Acids, Bases & Salts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-blue: #3498db;
+      --dark-blue: #2980b9;
+      --light-blue: #e1f5fe;
+      --bg-color: #f9f9f9;
+      --text-color: #2c3e50;
+      --light-gray: #f5f7fa;
+      --medium-gray: #7f8c8d;
+      --white: #ffffff;
+      --correct: #27ae60;
+      --incorrect: #e74c3c;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+      color: var(--text-color);
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-content {
+      text-align: center;
+      margin: 20px 0 30px;
+      padding: 25px;
+      background-color: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 4px solid var(--primary-blue);
+    }
+
+    .header-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-blue), #1abc9c);
+    }
+
+    .header-content h1 {
+      color: var(--primary-blue);
+      font-size: 2.5em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .institution-tag {
+      color: var(--medium-gray);
+      font-size: 1em;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    .quiz-container {
+      background: var(--white);
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .progress-container {
+      background: var(--light-blue);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .progress-bar {
+      flex-grow: 1;
+      height: 12px;
+      background: #ecf0f1;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-blue), #2ecc71);
+      width: 20%;
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+
+    .question-counter {
+      font-weight: 600;
+      color: var(--primary-blue);
+      min-width: 100px;
+      text-align: right;
+    }
+
+    .question {
+      padding: 30px;
+      border-bottom: 1px solid #ecf0f1;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .question:last-child {
+      border-bottom: none;
+    }
+
+    .question h3 {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+      color: var(--text-color);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .question h3 .number {
+      background: var(--primary-blue);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: var(--light-gray);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-color: var(--primary-blue);
+    }
+
+    .option input {
+      display: none;
+    }
+
+    .option label {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 500;
+    }
+
+    .custom-radio {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .custom-radio::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .option input:checked + label .custom-radio::after {
+      opacity: 1;
+    }
+
+    .option input:checked + label {
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .action-buttons {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 14px 30px;
+      font-size: 1.05em;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), #2ecc71);
+      color: white;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--dark-blue), #27ae60);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(41, 128, 185, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-outline:hover {
+      background: var(--light-blue);
+      transform: translateY(-3px);
+    }
+
+    .result-container {
+      background: var(--white);
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 30px;
+      display: none;
+    }
+
+    .result-header {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: var(--primary-blue);
+    }
+
+    .score-display {
+      font-size: 5em;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin: 20px 0;
+      position: relative;
+      display: inline-block;
+    }
+
+    .score-display::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary-blue), #2ecc71);
+      border-radius: 4px;
+    }
+
+    .feedback {
+      font-size: 1.4em;
+      margin-bottom: 30px;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .details-toggle {
+      background: var(--light-blue);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-size: 1em;
+      font-weight: 600;
+      color: var(--primary-blue);
+      cursor: pointer;
+      margin: 20px 0;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto;
+    }
+
+    .details-toggle:hover {
+      background: var(--primary-blue);
+      color: white;
+    }
+
+    .question-results {
+      width: 100%;
+      text-align: left;
+      margin-top: 30px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .question-results.expanded {
+      max-height: 1000px;
+    }
+
+    .question-result {
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      background: var(--light-gray);
+      border-left: 4px solid var(--medium-gray);
+    }
+
+    .question-result.correct {
+      border-left-color: var(--correct);
+      background-color: rgba(39, 174, 96, 0.1);
+    }
+
+    .question-result.incorrect {
+      border-left-color: var(--incorrect);
+      background-color: rgba(231, 76, 60, 0.1);
+    }
+
+    .answer-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .correct .answer-status {
+      color: var(--correct);
+    }
+
+    .incorrect .answer-status {
+      color: var(--incorrect);
+    }
+
+    .explanation {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #ddd;
+      font-size: 0.95em;
+    }
+
+    a.back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--primary-blue), #2ecc71);
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      width: fit-content;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05em;
+    }
+
+    a.back:hover {
+      background: linear-gradient(135deg, var(--dark-blue), #27ae60);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(41, 128, 185, 0.4);
+    }
+
+    a.back i {
+      transition: transform 0.3s ease;
+    }
+
+    a.back:hover i {
+      transform: translateX(-5px);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      animation: confetti-fall 5s linear forwards;
+      z-index: 1000;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .header-content h1 {
+        font-size: 2em;
+      }
+      .question {
+        padding: 20px;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .result-container {
+        padding: 30px 20px;
+      }
+      .score-display {
+        font-size: 4em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-content {
+        padding: 20px;
+      }
+      .header-content h1 {
+        font-size: 1.7em;
+      }
+      .score-display {
+        font-size: 3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-content">
+    <h1><i class="fas fa-vial"></i> Chemistry Quiz: Acids, Bases & Salts</h1>
+    <p class="institution-tag">Darul Ilm Educational Institute</p>
+  </div>
+
+  <div class="quiz-container">
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="question-counter" id="questionCounter">Question 1 of 5</div>
+    </div>
+    
+    <div class="question">
+      <h3><span class="number">1</span> Which of the following is a characteristic property of acids?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" id="q1a" name="q1" value="a">
+          <label for="q1a">
+            <span class="custom-radio"></span>
+            Turn blue litmus red
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q1b" name="q1" value="b">
+          <label for="q1b">
+            <span class="custom-radio"></span>
+            Feel slippery to touch
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q1c" name="q1" value="c">
+          <label for="q1c">
+            <span class="custom-radio"></span>
+            Turn red litmus blue
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q1d" name="q1" value="d">
+          <label for="q1d">
+            <span class="custom-radio"></span>
+            Have a pH greater than 7
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3><span class="number">2</span> What color does red litmus paper turn when dipped in a base?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" id="q2a" name="q2" value="a">
+          <label for="q2a">
+            <span class="custom-radio"></span>
+            Blue
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q2b" name="q2" value="b">
+          <label for="q2b">
+            <span class="custom-radio"></span>
+            Red
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q2c" name="q2" value="c">
+          <label for="q2c">
+            <span class="custom-radio"></span>
+            Green
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q2d" name="q2" value="d">
+          <label for="q2d">
+            <span class="custom-radio"></span>
+            No change
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3><span class="number">3</span> Which of these salts is commonly known as table salt?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" id="q3a" name="q3" value="a">
+          <label for="q3a">
+            <span class="custom-radio"></span>
+            Sodium Carbonate (Na₂CO₃)
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q3b" name="q3" value="b">
+          <label for="q3b">
+            <span class="custom-radio"></span>
+            Sodium Chloride (NaCl)
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q3c" name="q3" value="c">
+          <label for="q3c">
+            <span class="custom-radio"></span>
+            Calcium Sulfate (CaSO₄)
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q3d" name="q3" value="d">
+          <label for="q3d">
+            <span class="custom-radio"></span>
+            Potassium Nitrate (KNO₃)
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3><span class="number">4</span> What is the main product when an acid reacts with a base?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" id="q4a" name="q4" value="a">
+          <label for="q4a">
+            <span class="custom-radio"></span>
+            Salt and water
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q4b" name="q4" value="b">
+          <label for="q4b">
+            <span class="custom-radio"></span>
+            Acid and base
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q4c" name="q4" value="c">
+          <label for="q4c">
+            <span class="custom-radio"></span>
+            Hydrogen gas
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q4d" name="q4" value="d">
+          <label for="q4d">
+            <span class="custom-radio"></span>
+            Carbon dioxide
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="question">
+      <h3><span class="number">5</span> Which of the following is a strong acid?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" id="q5a" name="q5" value="a">
+          <label for="q5a">
+            <span class="custom-radio"></span>
+            Acetic acid (CH₃COOH)
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q5b" name="q5" value="b">
+          <label for="q5b">
+            <span class="custom-radio"></span>
+            Citric acid (C₆H₈O₇)
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q5c" name="q5" value="c">
+          <label for="q5c">
+            <span class="custom-radio"></span>
+            Hydrochloric acid (HCl)
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" id="q5d" name="q5" value="d">
+          <label for="q5d">
+            <span class="custom-radio"></span>
+            Carbonic acid (H₂CO₃)
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-outline" onclick="resetQuiz()">
+        <i class="fas fa-redo"></i> Reset Quiz
+      </button>
+      <button class="btn btn-primary" onclick="checkAnswers()">
+        Submit Answers <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="result-container" id="resultContainer">
+    <h2 class="result-header">Quiz Results</h2>
+    <div class="score-display" id="scoreDisplay">0/5</div>
+    <p class="feedback" id="feedback">Keep learning, you'll improve!</p>
+    
+    <button class="details-toggle" onclick="toggleDetails()">
+      <i class="fas fa-chevron-down"></i> View Detailed Results
+    </button>
+    
+    <div class="question-results" id="questionResults">
+      <!-- Detailed results will be inserted here -->
+    </div>
+    
+    <div class="action-buttons" style="margin-top: 30px; justify-content: center;">
+      <button class="btn btn-primary" onclick="resetQuiz()">
+        <i class="fas fa-redo"></i> Try Again
+      </button>
+    </div>
+  </div>
+
+  <a href="index.html" class="back">
+    <i class="fas fa-arrow-left"></i> Back to Dashboard
+  </a>
+
+  <script>
+    // Quiz data
+    const quizData = [
+      {
+        question: "Which of the following is a characteristic property of acids?",
+        options: [
+          "Turn blue litmus red",
+          "Feel slippery to touch",
+          "Turn red litmus blue",
+          "Have a pH greater than 7"
+        ],
+        correct: "a",
+        explanation: "Acids turn blue litmus paper red, which is a key characteristic property. Bases feel slippery and turn red litmus blue."
+      },
+      {
+        question: "What color does red litmus paper turn when dipped in a base?",
+        options: [
+          "Blue",
+          "Red",
+          "Green",
+          "No change"
+        ],
+        correct: "a",
+        explanation: "Red litmus paper turns blue when exposed to a basic solution. This is a standard test for bases."
+      },
+      {
+        question: "Which of these salts is commonly known as table salt?",
+        options: [
+          "Sodium Carbonate (Na₂CO₃)",
+          "Sodium Chloride (NaCl)",
+          "Calcium Sulfate (CaSO₄)",
+          "Potassium Nitrate (KNO₃)"
+        ],
+        correct: "b",
+        explanation: "Sodium chloride (NaCl) is commonly known as table salt. It's the salt we use in everyday cooking."
+      },
+      {
+        question: "What is the main product when an acid reacts with a base?",
+        options: [
+          "Salt and water",
+          "Acid and base",
+          "Hydrogen gas",
+          "Carbon dioxide"
+        ],
+        correct: "a",
+        explanation: "The reaction between an acid and a base is called neutralization, which produces salt and water."
+      },
+      {
+        question: "Which of the following is a strong acid?",
+        options: [
+          "Acetic acid (CH₃COOH)",
+          "Citric acid (C₆H₈O₇)",
+          "Hydrochloric acid (HCl)",
+          "Carbonic acid (H₂CO₃)"
+        ],
+        correct: "c",
+        explanation: "Hydrochloric acid (HCl) is a strong acid that completely dissociates in water. The others are weak acids."
+      }
+    ];
+
+    // DOM elements
+    const progressFill = document.getElementById('progressFill');
+    const questionCounter = document.getElementById('questionCounter');
+    const resultContainer = document.getElementById('resultContainer');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const feedback = document.getElementById('feedback');
+    const questionResults = document.getElementById('questionResults');
+
+    // Initialize quiz
+    function initQuiz() {
+      progressFill.style.width = '0%';
+      questionCounter.textContent = `Question 1 of ${quizData.length}`;
+      resultContainer.style.display = 'none';
+      resetSelections();
+    }
+
+    // Reset radio selections
+    function resetSelections() {
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.checked = false;
+      });
+    }
+
+    // Reset quiz
+    function resetQuiz() {
+      initQuiz();
+      document.querySelector('.quiz-container').style.display = 'block';
+      resultContainer.style.display = 'none';
+      questionResults.classList.remove('expanded');
+    }
+
+    // Toggle detailed results
+    function toggleDetails() {
+      questionResults.classList.toggle('expanded');
+      const icon = document.querySelector('.details-toggle i');
+      if (questionResults.classList.contains('expanded')) {
+        icon.className = 'fas fa-chevron-up';
+      } else {
+        icon.className = 'fas fa-chevron-down';
+      }
+    }
+
+    // Create confetti effect
+    function createConfetti() {
+      const container = document.body;
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        confetti.style.backgroundColor = getRandomColor();
+        container.appendChild(confetti);
+        
+        // Remove confetti after animation
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    }
+
+    function getRandomColor() {
+      const colors = ['#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Check answers
+    function checkAnswers() {
+      let score = 0;
+      let resultsHTML = '';
+      
+      // Check each question
+      quizData.forEach((question, index) => {
+        const selected = document.querySelector(`input[name=q${index+1}]:checked`);
+        const isCorrect = selected && selected.value === question.correct;
+        
+        if (isCorrect) score++;
+        
+        // Build results HTML
+        resultsHTML += `
+          <div class="question-result ${isCorrect ? 'correct' : 'incorrect'}">
+            <div class="answer-status">
+              <i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+              Question ${index+1}: ${isCorrect ? 'Correct' : 'Incorrect'}
+            </div>
+            <p><strong>Question:</strong> ${question.question}</p>
+            <p><strong>Your answer:</strong> ${selected ? question.options[selected.value.charCodeAt(0) - 97] : 'Not answered'}</p>
+            <p><strong>Correct answer:</strong> ${question.options[question.correct.charCodeAt(0) - 97]}</p>
+            <div class="explanation">
+              <strong>Explanation:</strong> ${question.explanation}
+            </div>
+          </div>
+        `;
+      });
+      
+      // Calculate percentage
+      const percentage = Math.round((score / quizData.length) * 100);
+      
+      // Update UI
+      scoreDisplay.textContent = `${score}/${quizData.length}`;
+      questionResults.innerHTML = resultsHTML;
+      
+      // Set feedback based on score
+      if (percentage >= 80) {
+        feedback.textContent = "Excellent! You've mastered acids, bases and salts!";
+        feedback.style.color = 'var(--correct)';
+        createConfetti();
+      } else if (percentage >= 60) {
+        feedback.textContent = "Good job! You have a solid understanding of the topic.";
+        feedback.style.color = '#f39c12';
+      } else {
+        feedback.textContent = "Keep learning! Review the acids, bases and salts concepts.";
+        feedback.style.color = 'var(--incorrect)';
+      }
+      
+      // Show results
+      document.querySelector('.quiz-container').style.display = 'none';
+      resultContainer.style.display = 'block';
+      
+      // Update progress bar
+      progressFill.style.width = '100%';
+    }
+
+    // Update progress as user answers questions
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const answeredCount = document.querySelectorAll('input[type="radio"]:checked').length;
+        const progress = (answeredCount / quizData.length) * 100;
+        progressFill.style.width = `${progress}%`;
+        questionCounter.textContent = `Question ${answeredCount + 1 > quizData.length ? quizData.length : answeredCount + 1} of ${quizData.length}`;
+      });
+    });
+
+    // Initialize quiz on page load
+    window.onload = initQuiz;
+  </script>
+</body>
+</html>

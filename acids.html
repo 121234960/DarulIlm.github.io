@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acids - Chemistry - Darul Ilm Educational Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #d32f2f;
+      --dark-red: #b71c1c;
+      --light-red: #fde0dc;
+      --bg-color: #fef5f5;
+      --text-color: #444;
+      --light-gray: #f5f5f5;
+      --medium-gray: #757575;
+      --white: #ffffff;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Header styling */
+    .header-content {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 30px;
+      background-color: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-red), #ff9800);
+    }
+
+    .header-content h1 {
+      color: var(--primary-red);
+      font-size: 2.8em;
+      font-weight: 700;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .institution-tag {
+      color: var(--medium-gray);
+      font-size: 1em;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* Section styling */
+    .section {
+      background: var(--white);
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 900px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .section h2 {
+      color: var(--primary-red);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      border-bottom: 2px solid var(--light-red);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section p, .section ul {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .section ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .section ul li {
+      margin-bottom: 12px;
+      padding-left: 35px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: "🧪";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.2em;
+    }
+
+    /* Definition boxes */
+    .definition {
+      background-color: var(--light-gray);
+      border-left: 4px solid var(--primary-red);
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .definition strong {
+      color: var(--primary-red);
+    }
+
+    /* Interactive elements */
+    .interactive-box {
+      background-color: var(--light-red);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      border: 1px dashed var(--primary-red);
+    }
+
+    .interactive-box h3 {
+      color: var(--dark-red);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: var(--primary-red);
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    tr:hover {
+      background-color: var(--light-red);
+    }
+
+    /* Back button styling */
+    a.back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--primary-red), #e53935);
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+      width: fit-content;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05em;
+    }
+
+    a.back:hover {
+      background: linear-gradient(135deg, var(--dark-red), #c62828);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(183, 28, 28, 0.4);
+    }
+
+    a.back:active {
+      transform: translateY(1px);
+    }
+
+    /* Iframe styling for embedded videos */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Tooltip for chemical formulas */
+    .chemical-formula {
+      position: relative;
+      cursor: help;
+      border-bottom: 1px dotted var(--primary-red);
+      font-weight: 600;
+    }
+
+    .chemical-formula:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--dark-red);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    /* Progress tracker */
+    .progress-tracker {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--white);
+      border-radius: 50px;
+      padding: 10px 5px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--medium-gray);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .progress-dot.active {
+      background-color: var(--primary-red);
+      transform: scale(1.3);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      color: var(--medium-gray);
+      font-size: 0.9em;
+      width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .progress-tracker {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content h1 {
+        font-size: 2.2em;
+      }
+      .section h2 {
+        font-size: 1.6em;
+      }
+      .section p, .section ul {
+        font-size: 1em;
+      }
+      .header-content, .section {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      .header-content h1 {
+        font-size: 1.8em;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .section h2 {
+        font-size: 1.4em;
+      }
+      .header-content, .section {
+        padding: 20px;
+      }
+      a.back {
+        padding: 12px 24px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+    .section:nth-child(6) { animation-delay: 0.5s; }
+    .section:nth-child(7) { animation-delay: 0.6s; }
+  </style>
+</head>
+<body>
+  <div class="header-content">
+    <h1><i class="fas fa-flask"></i> Acids in Chemistry</h1>
+    <p class="institution-tag">Darul Ilm Educational Institute - Chemistry Department</p>
+  </div>
+
+  <div class="progress-tracker">
+    <div class="progress-dot active" data-section="what-are-acids"></div>
+    <div class="progress-dot" data-section="characteristics"></div>
+    <div class="progress-dot" data-section="examples"></div>
+    <div class="progress-dot" data-section="strong-weak"></div>
+    <div class="progress-dot" data-section="video"></div>
+    <div class="progress-dot" data-section="experiment"></div>
+  </div>
+
+  <div class="section" id="what-are-acids">
+    <h2><i class="fas fa-question-circle"></i> What are Acids?</h2>
+    <p>Acids are fundamental chemical substances that play crucial roles in both nature and industry. In aqueous solution, acids are characterized by:</p>
+    <ul>
+      <li>A distinct sour taste (though tasting them is not recommended!)</li>
+      <li>The ability to turn blue litmus paper red</li>
+      <li>Reactivity with bases and certain metals to form salts</li>
+      <li>Conduction of electricity in solution</li>
+    </ul>
+    
+    <div class="definition">
+      <strong>Scientific Definition:</strong> According to the Brønsted-Lowry theory, acids are proton (H⁺ ion) donors. The Arrhenius definition states that acids are substances that increase the concentration of H⁺ ions in aqueous solution.
+    </div>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-lightbulb"></i> Did You Know?</h3>
+      <p>The word "acid" comes from the Latin word "acidus" meaning sour. This reflects one of their most noticeable properties that was observed since ancient times.</p>
+    </div>
+  </div>
+
+  <div class="section" id="characteristics">
+    <h2><i class="fas fa-star"></i> Key Characteristics</h2>
+    <ul>
+      <li><strong>Taste:</strong> Sour (e.g., lemon juice, vinegar) - though tasting laboratory chemicals is dangerous!</li>
+      <li><strong>Litmus Test:</strong> Turn blue litmus paper red</li>
+      <li><strong>Reactivity:</strong> React with active metals (like zinc, magnesium) to produce hydrogen gas (H₂)</li>
+      <li><strong>Neutralization:</strong> React with bases to form salt and water in a neutralization reaction</li>
+      <li><strong>Conductivity:</strong> Act as electrolytes, conducting electricity in aqueous solution</li>
+      <li><strong>pH Value:</strong> Have a pH value less than 7 (the lower the pH, the stronger the acid)</li>
+      <li><strong>Corrosiveness:</strong> Many strong acids are corrosive to organic materials and metals</li>
+    </ul>
+  </div>
+
+  <div class="section" id="examples">
+    <h2><i class="fas fa-vial"></i> Common Examples of Acids</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Acid Name</th>
+          <th>Chemical Formula</th>
+          <th>Common Sources/Uses</th>
+          <th>Strength</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hydrochloric Acid</td>
+          <td class="chemical-formula" data-tooltip="Hydrogen Chloride">HCl</td>
+          <td>Stomach acid, industrial cleaning</td>
+          <td>Strong</td>
+        </tr>
+        <tr>
+          <td>Sulfuric Acid</td>
+          <td class="chemical-formula" data-tooltip="Hydrogen Sulfate">H₂SO₄</td>
+          <td>Car batteries, fertilizer production</td>
+          <td>Strong</td>
+        </tr>
+        <tr>
+          <td>Nitric Acid</td>
+          <td class="chemical-formula" data-tooltip="Hydrogen Nitrate">HNO₃</td>
+          <td>Fertilizers, explosives</td>
+          <td>Strong</td>
+        </tr>
+        <tr>
+          <td>Acetic Acid</td>
+          <td class="chemical-formula" data-tooltip="Ethanoic Acid">CH₃COOH</td>
+          <td>Vinegar (4-8% solution), food preservative</td>
+          <td>Weak</td>
+        </tr>
+        <tr>
+          <td>Citric Acid</td>
+          <td class="chemical-formula" data-tooltip="2-Hydroxypropane-1,2,3-tricarboxylic acid">C₆H₈O₇</td>
+          <td>Citrus fruits, food additive</td>
+          <td>Weak</td>
+        </tr>
+        <tr>
+          <td>Carbonic Acid</td>
+          <td class="chemical-formula" data-tooltip="Hydrogen Carbonate">H₂CO₃</td>
+          <td>Carbonated drinks, blood buffer</td>
+          <td>Weak</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section" id="strong-weak">
+    <h2><i class="fas fa-chart-line"></i> Strong vs. Weak Acids</h2>
+    <p>The strength of an acid refers to its ability to donate protons (H⁺ ions) in aqueous solution.</p>
+    
+    <div class="definition">
+      <strong>Strong Acids:</strong> Completely ionize (dissociate) in water, meaning nearly all acid molecules break apart to release H⁺ ions. These make good electrolytes due to high ion concentration.
+    </div>
+    
+    <p>Examples of strong acids include:</p>
+    <ul>
+      <li>Hydrochloric acid (HCl)</li>
+      <li>Sulfuric acid (H₂SO₄) - diprotic (donates two H⁺ ions)</li>
+      <li>Nitric acid (HNO₃)</li>
+    </ul>
+    
+    <div class="definition">
+      <strong>Weak Acids:</strong> Only partially ionize in water, meaning only a fraction (typically less than 5%) of the acid molecules release H⁺ ions. They establish an equilibrium between ionized and unionized forms.
+    </div>
+    
+    <p>Examples of weak acids include:</p>
+    <ul>
+      <li>Acetic acid (CH₃COOH) - found in vinegar</li>
+      <li>Carbonic acid (H₂CO₃) - in carbonated beverages</li>
+      <li>Phosphoric acid (H₃PO₄) - in cola drinks</li>
+    </ul>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-brain"></i> Understanding Check</h3>
+      <p>Why do you think strong acids are more dangerous than weak acids at the same concentration? What safety precautions should be taken when handling strong acids?</p>
+    </div>
+  </div>
+
+  <div class="section" id="video">
+    <h2><i class="fas fa-video"></i> Watch: Introduction to Acids</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/XeJV5XQqE4I" title="Introduction to Acids" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p style="text-align: center; font-size: 0.9em; color: var(--medium-gray); margin-top: 10px;">
+      Video: Crash Course Chemistry - Acids and Bases
+    </p>
+  </div>
+
+  <div class="section" id="experiment">
+    <h2><i class="fas fa-home"></i> Try This at Home! (with adult supervision)</h2>
+    <div class="interactive-box">
+      <h3><i class="fas fa-flask"></i> Experiment 1: Acid-Base Reaction</h3>
+      <p><strong>Materials:</strong> Baking soda (sodium bicarbonate), vinegar, clear glass</p>
+      <p><strong>Procedure:</strong></p>
+      <ol style="padding-left: 35px;">
+        <li>Place 1 tablespoon of baking soda in the glass</li>
+        <li>Slowly add vinegar and observe the reaction</li>
+      </ol>
+      <p><strong>Observation:</strong> The mixture will fizz vigorously as carbon dioxide gas is produced. This demonstrates the neutralization reaction between an acid (acetic acid in vinegar) and a base (sodium bicarbonate).</p>
+      <p><strong>Chemical Equation:</strong> CH₃COOH + NaHCO₃ → CH₃COONa + H₂O + CO₂↑</p>
+    </div>
+    
+    <div class="interactive-box">
+      <h3><i class="fas fa-vial"></i> Experiment 2: Testing Acidity</h3>
+      <p><strong>Materials:</strong> Blue litmus paper, lemon juice, vinegar, milk, water</p>
+      <p><strong>Procedure:</strong></p>
+      <ol style="padding-left: 35px;">
+        <li>Dip separate pieces of blue litmus paper into each liquid</li>
+        <li>Observe any color changes</li>
+      </ol>
+      <p><strong>Observation:</strong> The lemon juice and vinegar will turn the litmus red, confirming their acidic nature. Milk may show slight acidity, while water should not change the litmus color.</p>
+    </div>
+    
+    <p style="font-weight: 600; color: var(--primary-red);"><i class="fas fa-exclamation-triangle"></i> Safety Note: Always wear protective goggles when conducting experiments, even with household chemicals. Never mix acids with other chemicals unless instructed.</p>
+  </div>
+
+  <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Chemistry Dashboard</a>
+
+  <footer>
+    <p>© 2023 Darul Ilm Educational Institute | Chemistry Department | Last Updated: <span id="last-updated"></span></p>
+  </footer>
+
+  <script>
+    // Update last modified date
+    document.getElementById('last-updated').textContent = new Date(document.lastModified).toLocaleDateString();
+    
+    // Progress tracker functionality
+    const sections = document.querySelectorAll('.section');
+    const dots = document.querySelectorAll('.progress-dot');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          dots.forEach(dot => {
+            dot.classList.remove('active');
+            if (dot.dataset.section === sectionId) {
+              dot.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    sections.forEach(section => {
+      observer.observe(section);
+      
+      // Add click functionality to dots
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const targetSection = document.getElementById(dot.dataset.section);
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+    
+    // Chemical formula tooltip enhancement
+    const formulas = document.querySelectorAll('.chemical-formula');
+    formulas.forEach(formula => {
+      formula.addEventListener('click', () => {
+        alert(`Chemical name: ${formula.dataset.tooltip}\nFormula: ${formula.textContent}`);
+      });
+    });
+  </script>
+</body>
+</html>
